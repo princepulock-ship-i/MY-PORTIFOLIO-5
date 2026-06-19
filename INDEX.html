@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1450, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+<title>Portfolio Layout</title>
+
+<style>
+:root {
+  --hero-8k-ratio: 7680 / 4320;
+  --page-max: 1450px;
+  --radius: 14px;
+  --section-gap: 180px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(130, 58, 255, 0.38), transparent 28%),
+    radial-gradient(circle at 85% 25%, rgba(88, 28, 135, 0.35), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.22), transparent 35%),
+    linear-gradient(135deg, #020008 0%, #090216 28%, #16072f 55%, #05000f 100%);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.55) 100%);
+  z-index: 0;
+}
+
+.portfolio {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 80px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: var(--section-gap);
+  clear: both;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius);
+  background: #222;
+  cursor: zoom-in;
+}
+
+/* INTRO PORTFOLIO ANIMATION - before About Me */
+.intro-animation-section {
+  width: 100%;
+  margin-bottom: 120px;
+}
+
+.intro-animation-box {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(130, 58, 255, 0.34), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(188, 18, 121, 0.32), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.12), transparent 42%),
+    linear-gradient(135deg, #020008 0%, #090216 28%, #16072f 58%, #05000f 100%);
+}
+
+.intro-animation-box::before,
+.intro-animation-box::after {
+  right: 14%;
+  bottom: 18%;
+  background: rgba(188, 18, 121, 0.28);
+  animation-delay: 1.2s;
+}
+
+.intro-animation-box::before {
+  left: 16%;
+  top: 16%;
+  background: rgba(130, 58, 255, 0.28);
+}
+
+.intro-animation-box::after {
+  right: 18%;
+  bottom: 20%;
+  background: rgba(255, 53, 123, 0.18);
+  animation-delay: 1.2s;
+}
+
+.intro-mini-pills {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.intro-mini-pills span {
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.intro-splash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intro-splash span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(2px);
+  transform: translate(-50%, -50%) scale(0.2);
+  animation: splashMove 10s infinite cubic-bezier(.2,.7,.2,1);
+}
+
+.intro-splash span:nth-child(1) {
+  background: #005dff;
+  animation-delay: 0.2s;
+  --x: -190px;
+  --y: -60px;
+}
+
+.intro-splash span:nth-child(2) {
+  background: #ff3030;
+  animation-delay: 0.45s;
+  --x: 165px;
+  --y: 20px;
+}
+
+.intro-splash span:nth-child(3) {
+  background: #ffad00;
+  animation-delay: 0.7s;
+  --x: 90px;
+  --y: -115px;
+}
+
+.intro-splash span:nth-child(4) {
+  background: #6b32ff;
+  animation-delay: 0.95s;
+  --x: -75px;
+  --y: 110px;
+}
+
+.intro-splash span:nth-child(5) {
+  background: #00a56a;
+  animation-delay: 1.15s;
+  --x: 210px;
+  --y: -75px;
+}
+
+.intro-splash span:nth-child(6) {
+  background: #ff4fa3;
+  animation-delay: 1.35s;
+  --x: -220px;
+  --y: 90px;
+}
+
+.intro-logo-wrap {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  transform: translateY(0);
+  animation: logoFloat 10s infinite ease-in-out;
+}
+
+.intro-word {
+  display: flex;
+  justify-content: center;
+  gap: 0.01em;
+  font-size: clamp(58px, 10vw, 132px);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  color: #005dff;
+}
+
+.intro-word span {
+  display: inline-block;
+  color: #ffffff;
+  text-shadow: 0 16px 46px rgba(168, 85, 247, 0.42);
+  animation: letterColor 10s infinite ease-in-out;
+}
+
+.intro-word span:nth-child(1) { animation-delay: 0s; }
+.intro-word span:nth-child(2) { animation-delay: 0.08s; }
+.intro-word span:nth-child(3) { animation-delay: 0.16s; }
+.intro-word span:nth-child(4) { animation-delay: 0.24s; }
+.intro-word span:nth-child(5) { animation-delay: 0.32s; }
+.intro-word span:nth-child(6) { animation-delay: 0.40s; }
+.intro-word span:nth-child(7) { animation-delay: 0.48s; }
+.intro-word span:nth-child(8) { animation-delay: 0.56s; }
+.intro-word span:nth-child(9) { animation-delay: 0.64s; }
+
+.intro-subtitle {
+  margin-top: 18px;
+  font-size: clamp(12px, 1.3vw, 16px);
+  color: rgba(255,255,255,0.88);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: subtitleFade 10s infinite ease-in-out;
+}
+
+@keyframes letterColor {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.86);
+    filter: blur(12px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  16% { color: var(--c); }
+  30% { color: #ffffff; }
+  48% {
+    color: #ffffff;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+  56% {
+    color: var(--c);
+    filter: blur(5px);
+    transform: translateY(-10px) scale(1.06);
+  }
+  68% {
+    color: #ffffff;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    color: #ffffff;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitleFade {
+  0%, 14% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  22%, 48% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  58% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  74%, 100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashMove {
+  0%, 48% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  56% {
+    opacity: 0.95;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+  }
+  68%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+}
+
+@keyframes introGlow {
+  0%, 42%, 78%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  55%, 65% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  55% {
+    transform: translateY(-4px);
+  }
+}
+
+
+
+
+/* 10 TEXT MARQUEE ANIMATION — only text, no boxes */
+.slot-animation-section {
+  width: 100%;
+  margin-top: -70px;
+  margin-bottom: 55px; /* reduced gap before About Me */
+  overflow: hidden;
+}
+
+.slot-marquee {
+  position: relative;
+  width: 100%;
+  padding: 18px 0;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+}
+
+.slot-marquee::before,
+.slot-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 130px;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.slot-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #090216, transparent);
+}
+
+.slot-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, #090216, transparent);
+}
+
+.slot-track {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  animation: slotScroll 28s linear infinite;
+}
+
+.slot-marquee:hover .slot-track {
+  animation-play-state: paused;
+}
+
+.animated-text-slot {
+  flex: 0 0 auto;
+  color: #ffffff;
+  font-size: 26px; /* h3 size */
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-shadow: 0 10px 32px rgba(168, 85, 247, 0.34);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.animated-text-slot:nth-child(3n + 1) {
+  color: #ffffff;
+}
+
+.animated-text-slot:nth-child(3n + 2) {
+  color: rgba(255,255,255,0.72);
+}
+
+.animated-text-slot:nth-child(3n + 3) {
+  color: rgba(168, 85, 247, 0.95);
+}
+
+
+.animated-text-slot:hover {
+  color: #b26bff;
+  text-shadow: 0 12px 38px rgba(178, 107, 255, 0.55);
+}
+
+@keyframes slotScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 30px));
+  }
+}
+
+
+
+#about-me,
+#brand-identity,
+#social-media,
+#product-ads,
+#fashion-design,
+#real-estate,
+#travel-campaign,
+#movie-artwork,
+#flyers-design {
+  scroll-margin-top: 70px;
+}
+
+/* ABOUT ME SECTION */
+.about-section {
+  width: 100%;
+  margin-bottom: 180px;
+}
+
+.about-card {
+  position: relative;
+  width: 100%;
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 40% 55%;
+  gap: 5%;
+  padding: 48px 50px;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.about-card::before {
+  display: none;
+}
+
+.about-left,
+.about-right {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-kicker {
+  color: rgba(255,255,255,0.58);
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.about-name {
+  color: #fff;
+  font-size: 62px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+
+.about-title {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.about-profile-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  height: 360px;
+  margin-top: 78px;
+  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+}
+
+.about-profile-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.18), transparent 52%),
+    linear-gradient(0deg, rgba(0,0,0,0.42), transparent 60%);
+  pointer-events: none;
+}
+
+.about-profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 0;
+  background: transparent;
+}
+
+.about-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 75px;
+  row-gap: 28px;
+  align-content: start;
+  padding-top: 0;
+}
+
+.about-intro {
+  grid-column: 1 / -1;
+  max-width: 760px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.36;
+  opacity: 0.95;
+  overflow-wrap: break-word;
+}
+
+.about-block h3 {
+  color: rgba(255,255,255,0.58);
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.about-block ul {
+  list-style: none;
+}
+
+.about-block li,
+.about-block p,
+.about-contact a {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.78;
+  text-decoration: none;
+  opacity: 0.96;
+  overflow-wrap: break-word;
+}
+
+.about-contact li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+}
+
+.about-icon {
+  width: 18px;
+  flex: 0 0 18px;
+  display: inline-flex;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+.about-qr-box {
+  width: 126px;
+  height: 126px;
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(90deg, #111 0 6px, #fff 6px 12px),
+    repeating-linear-gradient(0deg, #111 0 6px, #fff 6px 12px);
+  border: 1px solid rgba(255,255,255,0.24);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.about-qr-box span {
+  background: #111;
+  padding: 8px 10px;
+  border-radius: 7px;
+}
+
+/* BRAND IDENTITY SECTION */
+.brand-wrap {
+  display: block;
+}
+
+.brand-content {
+  width: 900px;
+  flex-shrink: 0;
+}
+
+.brand-cover-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 90px;
+  position: relative;
+}
+
+.brand-cover {
+  width: 900px;
+  aspect-ratio: var(--hero-8k-ratio);
+  border-radius: var(--radius);
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-top-with-text {
+  position: relative;
+  display: block;
+  margin-bottom: 35px;
+}
+
+.brand-top-row {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: -120px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.brand-cover-text {
+  position: absolute;
+  left: 1010px;
+  top: 90px;
+  width: 420px;
+  color: white;
+  margin-top: 0;
+  flex-shrink: 0;
+  transform: none;
+  z-index: 2;
+}
+
+.brand-cover-text h2 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.brand-cover-text p {
+  font-size: 24px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.brand-img1,
+.brand-img2,
+.brand-img3 {
+  width: 283px;
+  height: 283px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.brand-wide {
+  width: 900px;
+  aspect-ratio: var(--hero-8k-ratio);
+  margin-left: -120px;
+  margin-bottom: 45px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.tomfort-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  margin-left: 180px;
+}
+
+.tomfort-text {
+  width: 390px;
+  color: white;
+  margin-top: 100px;
+  flex-shrink: 0;
+}
+
+.tomfort-text h2 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.tomfort-text p {
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.tomfort-content {
+  width: 900px;
+}
+
+.brand-right-row {
+  display: flex;
+  gap: 25px;
+  width: 900px;
+  margin-bottom: 90px;
+}
+
+.brand-small {
+  width: calc((900px - 50px) / 3);
+  height: calc((900px - 50px) / 3);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.brand-banner {
+  width: 900px;
+  aspect-ratio: var(--hero-8k-ratio);
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+/* SECTION TEXT */
+.image-text-row {  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 28px;
+}
+
+.text-box {
+  width: 360px;
+  color: white;
+  margin-top: -120px;
+  margin-left: 150px;
+}
+
+.text-box h2 {
+  font-size: 45px;
+  margin-bottom: 18px;
+}
+
+.text-box p {
+  font-size: 39px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.section2-wrap {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.section2-text {
+  width: 350px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.section2-text h2 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.section2-text p {
+  font-size: 24px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.section3-wrap,
+.section4-wrap,
+.section5-wrap,
+.section6-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.section3-text,
+.section4-text,
+.section5-text,
+.section6-text {
+  color: white;
+  flex-shrink: 0;
+}
+
+.section3-text {
+  width: 420px;
+  margin-top: 80px;
+}
+
+.section4-text {
+  width: 380px;
+  margin-top: 120px;
+}
+
+.section5-text {
+  width: 420px;
+  margin-top: 40px;
+  margin-left: -120px;
+}
+
+.section6-text {
+  width: 380px;
+  margin-top: 10px;
+  margin-left: 200px;
+}
+
+.section3-text h2,
+.section4-text h2,
+.section5-text h2,
+.section6-text h2 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.section3-text p,
+.section4-text p,
+.section5-text p,
+.section6-text p {
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.center,
+.left,
+.right {
+  width: 100%;
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+/* HERO SLOTS */
+.hero-wrap {
+  justify-content: center;
+  padding-left: 0;
+  margin-bottom: 70px;
+}
+
+.hero,
+.last-hero {
+  width: 980px;
+  aspect-ratio: var(--hero-8k-ratio);
+}
+
+/* GRID */
+.square-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: 24px;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.big-square-grid {
+  grid-template-columns: repeat(3, 300px);
+  gap: 24px;
+}
+
+.big-square-grid .square {
+  width: 300px;
+  height: 300px;
+  transform: translateX(120px);
+}
+
+.portfolio-grid {
+  grid-template-columns: repeat(3, 320px);
+  gap: 28px;
+  transform: translateX(-120px);
+}
+
+.portfolio-grid .square {
+  width: 300px;
+  height: 300px;
+}
+
+/* A4 */
+.a4 {
+  aspect-ratio: 2480 / 3508;
+}
+
+.a4-two {
+  display: grid;
+  grid-template-columns: repeat(2, 360px);
+  gap: 36px;
+}
+
+.a4-three {
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
+  gap: 35px;
+  justify-content: flex-start;
+  transform: translateX(11px);
+}
+
+/* LARGE */
+.large {
+  width: 900px;
+  aspect-ratio: var(--hero-8k-ratio);
+}
+
+.large-stack {  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 0;
+}
+
+.plot-banner {
+  width: 900px;
+  aspect-ratio: 12960 / 4320;
+}
+
+.slot-1-3 {
+  margin-bottom: 28px;
+}
+
+.slot-4-5 {
+  margin-bottom: 28px;
+}
+
+.right .square-grid {
+  margin-right: 55px;
+}
+
+
+/* REAL ESTATE CUSTOM LAYOUT — slots 21 to 27 */
+.real-estate-layout {
+  width: 900px;
+  display: grid;
+  grid-template-columns: 220px 300px 220px;
+  grid-template-rows: 220px 220px 220px 220px;
+  column-gap: 48px;
+  row-gap: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.real-estate-gallery {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.real-large-wrap {
+  width: 900px;
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+.real-large-bottom {
+  width: 900px;
+  height: auto;
+  aspect-ratio: var(--hero-8k-ratio);
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+
+.real-slot {
+  width: 220px;
+  height: 220px;
+  aspect-ratio: 1080 / 1080; /* source slot size: 1080 x 1080 px */
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.real-a4 {
+  width: 300px;
+  height: auto;
+  aspect-ratio: 2480 / 3508; /* A4 portrait */
+  grid-column: 2;
+  grid-row: 2 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  align-self: center;
+}
+
+.real-top {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.real-left-1 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.real-right-1 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.real-left-2 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.real-right-2 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.real-bottom {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+
+/* REAL ESTATE LARGE SLOT BELOW 21-27 */
+.mixed-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 35px;
+  margin-right: 55px;
+}
+
+.mixed-row {
+  display: grid;
+  grid-template-columns: 220px 300px 220px;
+  gap: 24px;
+  align-items: center;
+}
+
+.mixed-row .square {
+  width: 220px;
+  height: 220px;
+}
+
+.mixed-row .a4 {
+  width: 300px;
+  height: auto;
+}
+
+.mixed-row-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: 24px;
+}
+
+.last-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.last-hero {
+  margin-bottom: 55px;
+}
+
+/* FLYERS DESIGN SECTION */
+.flyer-hero {
+  width: 980px;
+  aspect-ratio: var(--hero-8k-ratio);
+  margin: 0 auto 80px auto;
+  display: block;
+}
+
+.flyers-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.flyers-grid {
+  width: 980px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-left: -120px;
+}
+
+.flyer-slot {
+  width: 100%;
+  aspect-ratio: var(--hero-8k-ratio);
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.flyers-text {
+  width: 380px;
+  color: white;
+  margin-top: 70px;
+  flex-shrink: 0;
+}
+
+.flyers-text h2 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.flyers-text p {
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* CENTER ALL HERO IMAGE SLOTS */
+.brand-cover,
+.hero,
+.last-hero,
+.flyer-hero {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* PHONE RESPONSIVE */
+@media (max-width: 768px) {
+  .portfolio {
+    max-width: 100%;
+    padding: 35px 14px;
+  }
+
+  .section {
+    margin-bottom: 90px;
+  }
+
+  .intro-animation-section {
+    margin-bottom: 80px;
+  }
+
+  .intro-animation-box {
+    min-height: 320px;
+  }
+
+  .intro-mini-pills {
+    display: none;
+  }
+
+  .intro-word {
+    font-size: clamp(48px, 16vw, 82px);
+  }
+
+  .intro-subtitle {
+    font-size: 10px;
+    margin-top: 12px;
+  }
+
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 26px 22px;
+    min-height: auto;
+  }
+
+  .about-name {
+    font-size: 38px;
+  }
+
+  .about-kicker {
+    font-size: 14px;
+  }
+
+  .about-title {
+    font-size: 12px;
+  }
+
+  .about-profile-wrap {
+    width: 100%;
+    max-width: 360px;
+    height: 300px;
+    margin-top: 35px;
+  }
+
+  .about-right {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .about-intro,
+  .about-block li,
+  .about-block p,
+  .about-contact a {
+    font-size: 12px;
+  }
+
+  .about-block h3 {
+    font-size: 18px;
+  }
+
+  .brand-cover-row {
+    justify-content: center;
+    margin-bottom: 45px;
+  }
+
+  .brand-cover {
+    width: 78%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .brand-top-with-text {
+    position: relative;
+    display: block;
+    margin-bottom: 22px;
+  }
+
+  .brand-top-row {
+    width: 55%;
+    margin-left: 4%;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .brand-cover-text {
+    position: absolute;
+    left: 63%;
+    top: 55px;
+    width: 34%;
+    margin-top: 0;
+    transform: none;
+    text-align: left;
+    color: white;
+  }
+
+  .brand-cover-text h2 {
+    font-size: 18px;
+  }
+
+  .brand-cover-text p {
+    font-size: 8px;
+    line-height: 1.4;
+  }
+
+  .brand-content {
+    width: 100%;
+  }
+
+  .brand-img1,
+  .brand-img2,
+  .brand-img3 {
+    width: 31%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .brand-wide {
+    width: 55%;
+    margin-left: 4%;
+    margin-bottom: 24px;
+  }
+
+  .tomfort-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    margin-left: 16%;
+  }
+
+  .tomfort-text {
+    width: 30%;
+    margin-top: 35px;
+  }
+
+  .tomfort-text h2 {
+    font-size: 18px;
+  }
+
+  .tomfort-text p {
+    font-size: 8px;
+    line-height: 1.4;
+  }
+
+  .tomfort-content {
+    width: 48%;
+  }
+
+  .tomfort-content .brand-right-row {
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .brand-small {
+    width: calc((100% - 16px) / 3);
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .brand-banner {
+    width: 100%;
+  }
+
+  .flyer-hero {
+    width: 82%;
+    max-width: 360px;
+    margin: 0 auto 35px auto;
+  }
+
+  .flyers-content-row {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    gap: 5%;
+    align-items: start;
+  }
+
+  .flyers-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    margin-left: 0;
+  }
+
+  .flyer-slot {
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--hero-8k-ratio);
+  }
+
+  .flyers-text {
+    width: 100%;
+    margin: 25px 0 0 0;
+  }
+
+  .flyers-text h2 {
+    font-size: 18px;
+    line-height: 1.08;
+    margin-bottom: 8px;
+  }
+
+  .flyers-text p {
+    font-size: 8px;
+    line-height: 1.4;
+    opacity: 0.88;
+  }
+}
+
+/* LIGHTBOX */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+#lightbox-img {
+  max-width: 92%;
+  max-height: 92%;
+  object-fit: contain;
+  cursor: default;
+  background: transparent;
+}
+
+#close {
+  position: fixed;
+  top: 25px;
+  right: 40px;
+  font-size: 45px;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* PHONE SAME-AS-DESKTOP LOCK
+   This keeps the exact desktop design on phones.
+   Phone browser will scale the full 1450px layout instead of rearranging boxes. */
+html,
+body {
+  min-width: 1450px;
+}
+
+.portfolio {
+  width: 1450px;
+  max-width: none;
+}
+
+/* Disable mobile rearrangement: keep desktop layout even on small screens */
+@media (max-width: 768px) {
+  .portfolio {
+    width: 1450px;
+    max-width: none;
+    padding: 80px 60px;
+  }
+
+  .section {
+    margin-bottom: var(--section-gap);
+  }
+
+  .intro-animation-section {
+    margin-bottom: 120px;
+  }
+
+  .intro-animation-box {
+    min-height: 520px;
+  }
+
+  .intro-mini-pills {
+    display: flex;
+  }
+
+  .intro-word {
+    font-size: clamp(58px, 10vw, 132px);
+  }
+
+  .intro-subtitle {
+    font-size: clamp(12px, 1.3vw, 16px);
+    margin-top: 18px;
+  }
+
+  .about-card {
+    grid-template-columns: 40% 55%;
+    gap: 5%;
+    padding: 48px 50px;
+    min-height: 650px;
+  }
+
+  .about-name {
+    font-size: 62px;
+  }
+
+  .about-kicker {
+    font-size: 20px;
+  }
+
+  .about-title {
+    font-size: 16px;
+  }
+
+  .about-profile-wrap {
+    width: 100%;
+    max-width: 470px;
+    height: 360px;
+    margin-top: 78px;
+  }
+
+  .about-right {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 75px;
+    row-gap: 28px;
+  }
+
+  .about-intro,
+  .about-block li,
+  .about-block p,
+  .about-contact a {
+    font-size: 16px;
+  }
+
+  .about-block h3 {
+    font-size: 26px;
+  }
+
+  .brand-cover-row {
+    justify-content: center;
+    margin-bottom: 90px;
+  }
+
+  .brand-cover {
+    width: 900px;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .brand-top-with-text {
+    position: relative;
+    display: block;
+    margin-bottom: 35px;
+  }
+
+  .brand-top-row {
+    width: 900px;
+    margin-left: -120px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .brand-cover-text {
+    position: absolute;
+    left: 1010px;
+    top: 90px;
+    width: 420px;
+    margin-top: 0;
+    transform: none;
+    text-align: left;
+    color: white;
+  }
+
+  .brand-cover-text h2 {
+    font-size: 52px;
+  }
+
+  .brand-cover-text p {
+    font-size: 24px;
+    line-height: 1.6;
+  }
+
+  .brand-content {
+    width: 900px;
+  }
+
+  .brand-img1,
+  .brand-img2,
+  .brand-img3 {
+    width: 283px;
+    height: 283px;
+  }
+
+  .brand-wide {
+    width: 900px;
+    margin-left: -120px;
+    margin-bottom: 45px;
+  }
+
+  .tomfort-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    margin-left: 180px;
+  }
+
+  .tomfort-text {
+    width: 390px;
+    margin-top: 100px;
+  }
+
+  .tomfort-text h2 {
+    font-size: 48px;
+  }
+
+  .tomfort-text p {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+
+  .tomfort-content {
+    width: 900px;
+  }
+
+  .tomfort-content .brand-right-row {
+    width: 900px;
+    gap: 25px;
+    margin-bottom: 90px;
+  }
+
+  .brand-small {
+    width: calc((900px - 50px) / 3);
+    height: calc((900px - 50px) / 3);
+  }
+
+  .brand-banner {
+    width: 900px;
+  }
+
+  .flyer-hero {
+    width: 980px;
+    max-width: none;
+    margin: 0 auto 80px auto;
+  }
+
+  .flyers-content-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+  }
+
+  .flyers-grid {
+    width: 980px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-left: -120px;
+  }
+
+  .flyer-slot {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: var(--hero-8k-ratio);
+  }
+
+  .flyers-text {
+    width: 380px;
+    margin-top: 70px;
+  }
+
+  .flyers-text h2 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .flyers-text p {
+    font-size: 24px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+}
+
+.brand-extra-wide {
+  display: none;
+}
+
+
+/* REAL ESTATE PHONE LOCK */
+@media (max-width: 768px) {
+
+  .real-estate-layout {
+    width: 900px;
+    grid-template-columns: 220px 300px 220px;
+    grid-template-rows: 220px 220px 220px 220px;
+    column-gap: 48px;
+    row-gap: 28px;
+  }
+
+  .real-slot {
+    width: 220px;
+    height: 220px;
+  aspect-ratio: 1080 / 1080;
+  }
+
+  .real-a4 {
+    width: 300px;
+  }
+
+}
+
+
+/* REAL ESTATE LARGE SLOT PHONE LOCK */
+@media (max-width: 768px) {
+  }
+
+
+/* REAL ESTATE GALLERY PHONE LOCK */
+@media (max-width: 768px) {
+  .real-estate-gallery {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .real-large-wrap {
+    width: 900px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .real-large-bottom {
+    width: 900px;
+    height: auto;
+    aspect-ratio: var(--hero-8k-ratio);
+  }
+}
+
+
+/* SLOT ANIMATION PHONE LOCK */
+@media (max-width: 768px) {
+  .slot-animation-section {
+    margin-top: -70px;
+    margin-bottom: 55px;
+  }
+
+  .slot-marquee {
+    padding: 18px 0;
+  }
+
+  .animated-text-slot {
+    font-size: 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="portfolio">
+
+<section class="section intro-animation-section">
+  <div class="intro-animation-box">
+    <div class="intro-mini-pills">
+      <span>Make Like This</span>
+      <span>Save</span>
+      <span>Permalink</span>
+    </div>
+
+    <div class="intro-splash">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="intro-logo-wrap">
+      <div class="intro-word" aria-label="portfolio">
+        <span style="--c:#005dff">p</span>
+        <span style="--c:#ff3b30">o</span>
+        <span style="--c:#005dff">r</span>
+        <span style="--c:#005dff">t</span>
+        <span style="--c:#ffb000">f</span>
+        <span style="--c:#005dff">o</span>
+        <span style="--c:#7b3cff">l</span>
+        <span style="--c:#00a56a">i</span>
+        <span style="--c:#ff3b30">o</span>
+      </div>
+      <p class="intro-subtitle">Communication Design | 2026</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section slot-animation-section">
+  <div class="slot-marquee">
+    <div class="slot-track">
+        <a class="animated-text-slot" href="#brand-identity">Brand Identity</a>
+        <a class="animated-text-slot" href="#social-media">Social Media</a>
+        <a class="animated-text-slot" href="#social-media">Poster Design</a>
+        <a class="animated-text-slot" href="#flyers-design">Flyer Design</a>
+        <a class="animated-text-slot" href="#product-ads">Product Ads</a>
+        <a class="animated-text-slot" href="#fashion-design">Fashion Design</a>
+        <a class="animated-text-slot" href="#real-estate">Real Estate</a>
+        <a class="animated-text-slot" href="#travel-campaign">Travel Campaign</a>
+        <a class="animated-text-slot" href="#movie-artwork">Movie Artwork</a>
+        <a class="animated-text-slot" href="#about-me">Creative Portfolio</a>
+        <a class="animated-text-slot" href="#brand-identity">Brand Identity</a>
+        <a class="animated-text-slot" href="#social-media">Social Media</a>
+        <a class="animated-text-slot" href="#social-media">Poster Design</a>
+        <a class="animated-text-slot" href="#flyers-design">Flyer Design</a>
+        <a class="animated-text-slot" href="#product-ads">Product Ads</a>
+        <a class="animated-text-slot" href="#fashion-design">Fashion Design</a>
+        <a class="animated-text-slot" href="#real-estate">Real Estate</a>
+        <a class="animated-text-slot" href="#travel-campaign">Travel Campaign</a>
+        <a class="animated-text-slot" href="#movie-artwork">Movie Artwork</a>
+        <a class="animated-text-slot" href="#about-me">Creative Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section class="section about-section" id="about-me">
+  <div class="about-card">
+
+    <div class="about-left">
+      <p class="about-kicker">About Me</p>
+
+      <h1 class="about-name">
+        Srabon<br>
+        Portfolio
+      </h1>
+
+      <p class="about-title">Graphic Designer & Creative Visual Designer</p>
+
+      <div class="about-profile-wrap">
+        <img class="zoom-img about-profile" src="profile.png" alt="Profile Picture" onerror="this.style.display='none';">
+      </div>
+    </div>
+
+    <div class="about-right">
+      <p class="about-intro">
+        I create modern visual designs, social media posters, brand identity systems,
+        product advertisements, flyers, and promotional campaign visuals for businesses.
+        My work focuses on clean layout, strong composition, premium presentation, and
+        eye-catching designs that help brands look professional.
+      </p>
+
+      <div class="about-block">
+        <h3>Skills</h3>
+        <ul>
+          <li>Social Media Poster Design</li>
+          <li>Branding & Visual Identity</li>
+          <li>Flyer & Print Design</li>
+          <li>Product Advertisement</li>
+          <li>Fashion Poster Design</li>
+          <li>Real Estate Campaign</li>
+          <li>AI Image Creative Design</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h3>Software</h3>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Adobe InDesign</li>
+          <li>Canva</li>
+          <li>Midjourney</li>
+          <li>AI Image Tools</li>
+        </ul>
+      </div>
+
+      <div class="about-block about-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><span class="about-icon">✉</span><a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></li>
+          <li><span class="about-icon">◎</span><a href="#">instagram.com/yourprofile</a></li>
+          <li><span class="about-icon">◎</span><a href="#">facebook.com/yourpage</a></li>
+          <li><span class="about-icon">☏</span><a href="#">+880 1XXXXXXXXX</a></li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h3>Full CV</h3>
+        <p>Scan to view my detailed portfolio / CV</p>
+        <div class="about-qr-box"><span>QR</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section brand-section" id="brand-identity">
+  <div class="brand-cover-row">
+    <img width="7680" height="4320" class="zoom-img brand-cover" src="visual identy cover.png" alt="Brand Identity Cover">
+  </div>
+
+  <div class="brand-wrap">
+    <div class="brand-content">
+      <div class="brand-top-with-text">
+        <div class="brand-top-row">
+        <img class="zoom-img brand-img1" src="brand identity 5.png" alt="Brand 1">
+        <img class="zoom-img brand-img2" src="brand identity 4.png" alt="Brand 2">
+        <img class="zoom-img brand-img3" src="brand identity.png" alt="Brand 3">
+      </div>
+
+
+
+    <div class="brand-cover-text">
+      <h2>Visual Identity System</h2>
+      <p>
+        Brand identity design, logo usage, visual direction,
+        mockups, and complete creative guidelines for building
+        a consistent and memorable brand presence.
+      </p>
+    </div>
+      </div>
+
+      
+      <img width="7680" height="4320" class="zoom-img brand-wide" src="brand identity 2 copy.png" alt="Brand 4">
+      <img width="7680" height="4320" class="zoom-img brand-wide" src="brand identity 3.png" alt="Brand 5">
+      <img width="7680" height="4320" class="zoom-img brand-wide brand-extra-wide" src="topfort mockp.png big 1.png" alt="Brand 6">
+
+      <div class="tomfort-wrap">
+        <div class="tomfort-text">
+          <h2>Merchandise Brand Mockups</h2>
+          <p>
+            Premium apparel mockups, product branding,
+            fashion merchandise visuals, and brand identity
+            applications designed for modern lifestyle brands.
+          </p>
+        </div>
+
+        <div class="tomfort-content">
+          <div class="brand-right-row">
+            <img class="zoom-img brand-small" src="cap mock 1.png" alt="Brand 6">
+            <img class="zoom-img brand-small" src="hoodie mock up f.png" alt="Brand 7">
+            <img class="zoom-img brand-small" src="brand logo tom.png" alt="Brand 8">
+          </div>
+
+          <img width="7680" height="4320" class="zoom-img brand-banner" src="topfort mockp.png big 1.png" alt="Brand 9">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="social-media">
+  <div class="center hero-wrap">
+    <img width="7680" height="4320" class="zoom-img hero" src="social midia png.png" alt="Hero">
+  </div>
+
+  <div class="left slot-1-3">
+    <div class="square-grid">
+      <img class="zoom-img square" src="food poster.jpg" alt="1">
+      <img class="zoom-img square" src="PIZZA POSTER.jpg" alt="2">
+      <img class="zoom-img square" src="coffee poster.jpg" alt="3">
+    </div>
+  </div>
+
+  <div class="image-text-row">
+    <div class="a4-two">
+      <img class="zoom-img a4" src="shawarma 1.png" alt="4">
+      <img class="zoom-img a4" src="shawarma 3.png" alt="5">
+    </div>
+
+    <div class="text-box">
+      <h2>Creative Food Poster Design</h2>
+      <p>
+        I create modern social media posters, food ads, branding visuals,
+        and promotional designs for businesses.
+      </p>
+    </div>
+  </div>
+
+  <div class="left">
+    <div class="large-stack">
+      <img width="7680" height="4320" class="zoom-img large" src="shawarma 2.png" alt="6">
+      <img width="7680" height="4320" class="zoom-img large" src="food brand.png" alt="7">
+      <img width="7680" height="4320" class="zoom-img large" src="food brand 2.png" alt="8">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="product-ads">
+  <div class="section2-wrap">
+    <div class="section2-text">
+      <h2>Creative Product Advertisement</h2>
+      <p>
+        High-converting product posters,
+        social media campaigns,
+        commercial advertisements,
+        and promotional creatives
+        designed to increase brand visibility and sales.
+      </p>
+    </div>
+
+    <div class="square-grid big-square-grid">
+      <img class="zoom-img square" src="smart watch.jpg" alt="9">
+      <img class="zoom-img square" src="smart watch 2.jpg" alt="10">
+      <img class="zoom-img square" src="smart phone poster.jpg" alt="11">
+      <img class="zoom-img square" src="SUNSCREAM POSTER.jpg" alt="12">
+      <img class="zoom-img square" src="GYM POSTER 2.jpg" alt="13">
+      <img class="zoom-img square" src="perfume social media poster.jpg" alt="14">
+    </div>
+  </div>
+</section>
+
+<section class="section left" id="fashion-design">
+  <div class="section3-wrap">
+    <div class="a4-two">
+      <img class="zoom-img a4" src="cloth1.png" alt="15">
+      <img class="zoom-img a4" src="cloth3.png" alt="16">
+      <img class="zoom-img a4" src="cloth2.png" alt="17">
+      <img class="zoom-img a4" src="cloth 5.png" alt="18">
+      <img class="zoom-img a4" src="cloth 6.png" alt="19">
+      <img class="zoom-img a4" src="cloth.png" alt="20">
+    </div>
+
+    <div class="section3-text">
+      <h2>Fashion Brand Posters</h2>
+      <p>
+        Modern clothing advertisements,
+        fashion campaign visuals,
+        apparel posters, and product-based designs for clothing brands.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="real-estate">
+  <div class="section4-wrap">
+    <div class="section4-text">
+      <h2>Real Estate Poster Design</h2>
+      <p>
+        Property advertisements, land project banners,
+        real estate social media posts, and modern housing campaign visuals.
+      </p>
+    </div>
+
+    <div class="real-estate-gallery">
+    <div class="real-estate-layout">
+      <img width="1080" height="1080" class="zoom-img real-slot real-top" src="plot 1.jpg" alt="21">
+
+      <img width="1080" height="1080" class="zoom-img real-slot real-left-1" src="plot 3.png" alt="22">
+      <img class="zoom-img real-a4" src="real estate poster 1 balck.png" alt="23">
+      <img width="1080" height="1080" class="zoom-img real-slot real-right-1" src="REAL ESTATE 2 POSTER.png" alt="24">
+
+      <img width="1080" height="1080" class="zoom-img real-slot real-left-2" src="real estate 3 poster.png" alt="25">
+      <img width="1080" height="1080" class="zoom-img real-slot real-right-2" src="plot 2.png" alt="26">
+
+      <img width="1080" height="1080" class="zoom-img real-slot real-bottom" src="plot 4.png" alt="27">
+    </div>
+
+    <div class="real-large-wrap">
+      <img width="7680" height="4320" class="zoom-img real-large-bottom" src="plot 4.png" alt="28">
+    </div>
+    </div>
+</div>
+</section>
+
+<section class="section" id="travel-campaign">
+  <div class="section5-wrap">
+    <div class="square-grid portfolio-grid">
+      <img class="zoom-img square" src="TRAVEL POSTER.jpg" alt="28">
+      <img class="zoom-img square" src="TRAVEL POSTER 2.jpg" alt="29">
+      <img class="zoom-img square" src="travel poster 3.jpg" alt="30">
+      <img class="zoom-img square" src="TRAVELPOSTE 4.jpg" alt="31">
+      <img class="zoom-img square" src="business markiting poster.jpg" alt="32">
+      <img class="zoom-img square" src="images/33.jpg" alt="33">
+      <img class="zoom-img square" src="images/34.jpg" alt="34">
+      <img class="zoom-img square" src="images/35.jpg" alt="35">
+      <img class="zoom-img square" src="images/36.jpg" alt="36">
+    </div>
+
+    <div class="section5-text">
+      <h2>Travel & Tourism Campaigns</h2>
+      <p>
+        Creative travel advertisements, tourism promotions,
+        destination marketing, holiday campaign visuals,
+        and engaging social media creatives.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section last-section" id="movie-artwork">
+  <img width="7680" height="4320" class="zoom-img last-hero" src="movie poster cover.png" alt="37">
+
+  <div class="section6-wrap">
+    <div class="section6-text">
+      <h2>Movie Poster Design</h2>
+      <p>
+        Creative cinematic posters, film key visuals,
+        dramatic compositions, and promotional artwork.
+      </p>
+    </div>
+
+    <div class="a4-three">
+      <img class="zoom-img a4" src="images/38.jpg" alt="38">
+      <img class="zoom-img a4" src="images/39.jpg" alt="39">
+      <img class="zoom-img a4" src="images/40.jpg" alt="40">
+    </div>
+  </div>
+</section>
+
+
+<section class="section flyers-section" id="flyers-design">
+  <img width="7680" height="4320" class="zoom-img flyer-hero" src="flyers cover.png" alt="Flyers Design Cover">
+
+  <div class="flyers-content-row">
+
+    <div class="flyers-grid">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="flyer design xxx.png" alt="Flyer 1">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="flyer poster x.png" alt="Flyer 2">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="flyer poster xx.png" alt="Flyer 3">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="Free_Roll-up_Mockup_2.jpg" alt="Flyer 4">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="Free_Roll-up_Mockup_1.jpg" alt="Flyer 5">
+      <img width="7680" height="4320" class="zoom-img flyer-slot" src="flyer 6.png" alt="Flyer 6">
+    </div>
+
+    <div class="flyers-text">
+      <h2>Flyers Design</h2>
+      <p>
+        Creative flyer layouts, promotional campaign designs,
+        business advertising flyers, event visuals, and premium
+        print-ready marketing designs for modern brands.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+
+<div id="lightbox">
+  <span id="close">&times;</span>
+  <img id="lightbox-img" src="" alt="Zoom Image">
+</div>
+
+<script>
+const zoomImages = document.querySelectorAll(".zoom-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.getElementById("close");
+
+zoomImages.forEach((img) => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  lightboxImg.src = "";
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+  }
+});
+</script>
+
+</body>
+</html>
